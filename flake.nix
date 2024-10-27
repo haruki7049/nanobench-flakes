@@ -22,17 +22,19 @@
         inputs.treefmt-nix.flakeModule
       ];
 
-      perSystem = { pkgs, ... }: {
-        treefmt = {
-          projectRootFile = "flake.nix";
-          programs.nixfmt.enable = true;
-        };
+      perSystem =
+        { pkgs, ... }:
+        {
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs.nixfmt.enable = true;
+          };
 
-        devShells.default = pkgs.mkShell {
-          packages = [
-            pkgs.nil
-          ];
+          devShells.default = pkgs.mkShell {
+            packages = [
+              pkgs.nil
+            ];
+          };
         };
-      };
     };
 }
